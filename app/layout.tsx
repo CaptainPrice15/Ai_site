@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -9,7 +10,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var theme='light';try{var saved=localStorage.getItem('signal-syntax-theme');theme=saved==='light'||saved==='dark'?saved:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}catch(e){theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=theme;})();` }} />
+      </head>
       <body>
         <header className="site-header">
           <div className="header-inner">
@@ -19,6 +23,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <Link href="/#topics">Topics</Link>
               <Link className="nav-cta" href="/#library">Find a field note <span aria-hidden="true">↗</span></Link>
             </nav>
+            <ThemeToggle />
             <details className="mobile-nav">
               <summary>Menu <span aria-hidden="true">＋</span></summary>
               <nav className="mobile-nav-panel" aria-label="Mobile navigation">
