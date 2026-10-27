@@ -8,7 +8,7 @@ export default function HomePage() {
   const articleSummaries = getArticleSummaries();
 
   return (
-    <main>
+    <main id="main-content">
       <section className="hero wrap">
         <div className="hero-copy">
           <span className="eyebrow"><span className="eyebrow-dot" /> A field guide for the AI curious</span>
@@ -49,6 +49,7 @@ export default function HomePage() {
       </section>
 
       <section className="library-wrap wrap"><SearchableLibrary articles={articleSummaries} /></section>
+      <section className="tools-promo wrap"><div><span className="eyebrow">A little hands-on learning</span><h2>Make something, not just notes.</h2><p>Try a simulated terminal or shape a prompt in the browser.</p></div><Link className="button button-dark" href="/tools">Explore the tools <span aria-hidden="true">↗</span></Link></section>
       <section className="closing-note wrap"><span className="closing-icon" aria-hidden="true">✳</span><p>Tools change. <em>Curiosity compounds.</em></p><Link href="#library">Find your next idea <span aria-hidden="true">↗</span></Link></section>
     </main>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MobileNav } from "@/components/mobile-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
 import "./globals.css";
 
@@ -15,23 +16,18 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script dangerouslySetInnerHTML={{ __html: `(function(){var theme='light';try{var saved=localStorage.getItem('signal-syntax-theme');theme=saved==='light'||saved==='dark'?saved:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}catch(e){theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=theme;})();` }} />
       </head>
       <body>
+        <a className="skip-link" href="#main-content">Skip to main content</a>
         <header className="site-header">
           <div className="header-inner">
             <Link className="wordmark" href="/" aria-label="Signal and Syntax home"><span className="wordmark-mark" aria-hidden="true">s<span>.</span></span><span>signal <em>&</em> syntax</span></Link>
             <nav className="main-nav" aria-label="Main navigation">
               <Link href="/#library">Explore</Link>
               <Link href="/#topics">Topics</Link>
+              <Link href="/tools">Tools</Link>
               <Link className="nav-cta" href="/#library">Find a field note <span aria-hidden="true">↗</span></Link>
             </nav>
             <ThemeToggle />
-            <details className="mobile-nav">
-              <summary>Menu <span aria-hidden="true">＋</span></summary>
-              <nav className="mobile-nav-panel" aria-label="Mobile navigation">
-                <Link href="/#library">Explore the library</Link>
-                <Link href="/#topics">Browse topics</Link>
-                <Link href="/#library">Find a field note</Link>
-              </nav>
-            </details>
+            <MobileNav />
           </div>
         </header>
         {children}

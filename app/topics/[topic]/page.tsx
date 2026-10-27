@@ -22,7 +22,7 @@ export default async function TopicPage({ params }: { params: Promise<{ topic: s
   const topicArticles = articles.filter((article) => article.topic === topic.name);
 
   return (
-    <main className="topic-page wrap">
+    <main id="main-content" className="topic-page wrap">
       <Link className="back-link" href="/#topics"><span aria-hidden="true">←</span> All topics</Link>
       <header className={`topic-page-header topic-${topic.color}`}>
         <span className="topic-icon" aria-hidden="true">{topic.icon}</span>

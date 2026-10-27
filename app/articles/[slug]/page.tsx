@@ -20,7 +20,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   if (!article) notFound();
 
   return (
-    <main className="article-page wrap">
+    <main id="main-content" className="article-page wrap">
       <Link className="back-link" href="/#library"><span aria-hidden="true">←</span> Back to all field notes</Link>
       <article className="article-content">
         <header className="article-header">
